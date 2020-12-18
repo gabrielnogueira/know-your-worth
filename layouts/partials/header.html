@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
   <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8PGS919T0Q"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-8PGS919T0Q');
+    </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -38,15 +47,22 @@
       const THEME_LIGHT = "light";
       const THEME_DARK = "dark";
 
+      function bindThemeToControl(preferredTheme){
+        if(!!preferredTheme && !(preferredTheme == 'light')){
+          document.getElementById('darkSwitch').checked = true;
+        }}
+
       function setTheme() {
         const preferredTheme = localStorage.getItem(USER_PREFERRED_THEME);
         if(preferredTheme){
           document.body.classList.add(preferredTheme);
+          bindThemeToControl(preferredTheme);
           return;
         }
 
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
           document.body.classList.add('dark');
+          bindThemeToControl(THEME_DARK);
           return;
         }
 
@@ -61,6 +77,7 @@
         function setBodyClass() {
           if (now > sunrise && now < sunset) return;
           document.body.classList.add('dark');
+          bindThemeToControl(THEME_DARK)
         }
 
         if (date !== prev) {
@@ -103,7 +120,7 @@
   </head>
   <body class="{{ if eq .Kind `page` }}single{{ else }}list{{ if .IsHome }} home{{ end }}{{ end }}">
     <script>
-      setTheme();
+      {{/*  setTheme();  */}}
     </script>
     <header class="header">
       <nav class="nav">
@@ -123,9 +140,8 @@
             <div class="custom-control custom-switch">
                 <input type="checkbox" class="custom-control-input" id="darkSwitch" onchange="toggleTheme()" >
                 <script>
-                  if(!(localStorage.getItem('USER_PREFERRED_THEME') == 'light')){
-                    document.getElementById('darkSwitch').checked = true;
-                  }
+                    setTheme()
+                   {{/*  bindThemeToControl(localStorage.getItem('USER_PREFERRED_THEME'))  */}}
                 </script>
                 <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
             </div>

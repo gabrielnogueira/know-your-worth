@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/624765bd-73de-4e74-bb40-cf40b7cefc5e/deploy-status)](https://app.netlify.com/sites/know-your-worth/deploys)
+
 ### What is this
 
 After watch a [video on youtube](https://www.youtube.com/watch?v=Ce_Y3hyvHdo) about software engineer compensations i went through a research about this subject to understand better what could be the pros and cons about share info about our salary.
