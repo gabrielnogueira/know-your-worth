@@ -50,7 +50,7 @@ if(index < 2){
 
 ### Contribute
 
-To contribute, you just have to create a PR to the branch new-posts on the project *githublink* including a ***@mynickname.md*** file inside /posts folder with your data.
+To contribute, you just have to create a PR to the branch new-posts on this project including a ***@mynickname.md*** file inside /posts folder with your data.
 
 Follow this template:
 
