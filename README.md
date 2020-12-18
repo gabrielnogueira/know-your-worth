@@ -76,8 +76,11 @@ locationIndex: 0 #450.35 a single person estimated monthly costs without rent in
 types: "" #permanent, contractor 
 ---
 
-<!-- how do i get here -->
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+<!-- how do i get here (see existing .md on /content/posts for samples) -->
+2011 - position 1 - $?k - job-type  
+2011-15 - position 2 - $??k - job-type  
+...  
+2020 - current position - $??k - job-type  
 ```
 
 If you are not familiar with github, To do that, just:
