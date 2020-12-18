@@ -19,7 +19,7 @@ draft: false
 name: "" # My Name
 social: "" #@mytwitter @mygithub...
 picture: "" #public avatar url
-socialUrl: ""
+socialUrl: "" #share your profile url if you want someone to connect with you
 degrees: "" #self taught, computer science, MBA...
 experiences: "" #12 years
 positions: "" #senior software engineer
