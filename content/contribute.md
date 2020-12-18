@@ -6,7 +6,7 @@ type: page
 author: Gabriel Nogueira
 ---
 
-To contribute, you just have to create a PR to the branch new-posts on the project [project repository](https://github.com/gabrielnogueira/know-your-worth) including a ***@mynickname.md*** file inside /posts folder with your data.
+To contribute, you just have to create a PR to the branch new-posts on the project [project repository](https://github.com/gabrielnogueira/know-your-worth) including a ***@mynickname.md*** file inside /content/posts folder with your data.
 
 Follow this template:
 
