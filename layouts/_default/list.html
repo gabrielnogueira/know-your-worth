@@ -51,7 +51,7 @@
                     {{- end }}
                     <span>{{- safeHTML $value}}</span>
                     <br/>
-                    <i class="salary" ></i><span>{{title .Params.salaries}}</span>
+                    <i class="salary" ></i><span>{{title .Params.salaries}} (in usd)</span>
                     <br/>
                     <i class="job-type" ></i><a onclick="navigate(event)" href="/types/{{.Params.types | urlize}}">{{title .Params.types}}</a>
                 </section>

@@ -70,9 +70,9 @@ degrees: "" #self taught, computer science, MBA...
 experiences: "" #12 years
 positions: "" #senior software engineer
 locations: [] #[city, country]
-salaries: "" #40k base | 100k bonus (per year)
-salaryTotal: 0 #240000.00 all annual compensation sum
-locationIndex: 0 #450.35 a single person estimated monthly costs without rent in numbeo.com to your location
+salaries: "" #40k base | 100k bonus (per year, in usd)
+salaryTotal: 0 #240000.00 all annual compensation sum (in usd)
+locationIndex: 0 #450.35 a single person estimated monthly costs without rent in numbeo.com to your location (in usd, you can change the currency on numbeo site)
 types: "" #permanent, contractor 
 ---
 

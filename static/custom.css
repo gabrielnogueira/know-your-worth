@@ -176,8 +176,9 @@ i.job-type::before  {
   transform: scale(1.05);
 }
 
-.post-entry:active{
+.post-entry.active{
   /* transform: scale(.95); */
+  max-width: 98%;
 }
 
 .post-entry.active:active, 
@@ -230,6 +231,12 @@ i.job-type::before  {
   display: none;
 }
 
+@media (max-width: 768px){
+  .close {
+    right: 20px;
+  }
+}
+
 .post-entry.active .close {
   display: block;
 }
@@ -255,10 +262,22 @@ i.job-type::before  {
   transform: rotate(-45deg);
 }
 
+.menu{
+  flex-wrap: wrap;
+}
+
 .menu li div{
   height:100%;
   display: flex;
   align-items: center;
+}
+
+.menu li:last-child{
+  margin-left: 0;
+}
+
+.menu li:first-child{
+  margin-left: 10px;
 }
 
 .custom-switch{
