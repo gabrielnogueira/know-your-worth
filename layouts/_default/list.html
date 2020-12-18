@@ -1,0 +1,156 @@
+{{- partial "header.html" . }}
+
+{{- $scope := .Site }}
+
+{{- if and .Title (not .IsHome) }}
+    <header class="page-header"><h2>{{title .Data.Singular}}: {{title .Title }}</h2></header>{{ $scope = . }}
+{{ end }}
+
+{{- $paginator := .Paginate (where $scope.RegularPages ".Params.type" "!=" "page") }}
+
+<section class="list-content">
+    {{- range $index, $page := $paginator.Pages }}
+        {{- $class := "post-entry" }}
+        {{- if .Data.Term }}
+            {{- $class = "post-entry tag-entry" }}
+        {{- end }}
+
+        <article class="{{ $class }}">
+            <div class="content" id="content_{{$index}}">
+                <div class="close" onclick="clearActive()"></div>
+                <header class="entry-header">
+                    <div class="avatar" style="background-image: url({{.Params.picture}})" >
+                    </div>
+                    <!-- <h2>{{ .Title }}</h2> -->
+                    <div class="name">
+                        <h4>{{title .Params.name}}</h4>
+                        <h6>
+                            <a onclick="navigate(event,true)" href="{{.Params.socialUrl}}">{{.Params.social}}</a> 
+                        </h6>
+                    </div>
+                    <a href="/legend" class="salary-index tooltip" data-value="{{div (mul (div .Params.salaryTotal 12) .65) .Params.locationIndex}}">
+                        
+                    </a>
+                </header>
+
+                <section class="entry-content">
+                    <i class="graduation" ></i><a onclick="navigate(event)" href="/degrees/{{.Params.degrees | urlize}}">{{title .Params.degrees}}</a> 
+                    <br/>
+                    <i class="experience" ></i><a onclick="navigate(event)" href="/experiences/{{.Params.experiences | urlize}}">{{.Params.experiences}}</a>
+                    <br/>
+                    <i class="position" ></i><a onclick="navigate(event)" href="/positions/{{.Params.positions | urlize}}">{{title .Params.positions}}</a>
+                    <br/>
+                    <i class="place" ></i>
+                    {{$value := ""}}
+                    {{- range $index, $location := .Params.locations -}}
+                        {{- if gt $index 0}}
+                            {{- $value =  printf "%s%s" $value " | "}}
+                        {{- end}}
+                        {{$value = printf "%s%s" $value  (printf "<a onclick='navigate(event)' href='/locations/%s'>%s</a>" ($location | urlize) (title $location))}}
+                       
+                    {{- end }}
+                    <span>{{- safeHTML $value}}</span>
+                    <br/>
+                    <i class="salary" ></i><span>{{title .Params.salaries}}</span>
+                    <br/>
+                    <i class="job-type" ></i><a onclick="navigate(event)" href="/types/{{.Params.types | urlize}}">{{title .Params.types}}</a>
+                </section>
+
+                <section class="entry-details">
+                    <h4>How do i get here:</h4>
+                    {{.Content}}
+                </section>
+
+                <footer class="entry-footer">
+                    <button onclick="showItem(event, 'content_{{$index}}')">More</button>
+                    <time>{{ .Date.Format "January 2, 2006" }}</time>
+                </footer>
+            </div>
+            <!-- <a class="entry-link" href="{{ .Permalink }}"></a> -->
+        </article>
+    {{- end }}
+</section>
+
+{{- if gt $paginator.TotalPages 1 }}
+    <footer class="page-footer">
+        <nav class="pagination">
+            {{- if $paginator.HasPrev }}
+            <a class="prev" href="{{ $paginator.Prev.URL }}">← {{ i18n "prev_page" }}</a>
+            {{- end }}
+            {{- if $paginator.HasNext }}
+            <a class="next" href="{{ $paginator.Next.URL }}">{{ i18n "next_page" }} →</a>
+            {{- end }}
+        </nav>
+    </footer>
+{{- end }}
+
+{{- partial "footer.html" . }}
+
+<script>
+
+    function navigate(e, newTab = false){
+        e.preventDefault();
+        e.stopPropagation();
+        if(newTab){
+            window.open(e.currentTarget.href)
+        }else{
+            window.location = e.currentTarget.href
+        }
+    }
+    function clearActive(e){
+        if(e){
+            e.stopPropagation();
+            e.preventDefault();
+        }
+
+        const toRemove = document.querySelectorAll(".post-entry.active")[0];
+        if(toRemove){
+            document.body.removeChild(document.querySelectorAll(".post-entry.active")[0])
+        }
+         
+    }
+    function showItem(e, id) {
+        if(!e){
+           return;
+        }
+
+        e.stopPropagation();
+        e.preventDefault();
+
+        clearActive();
+
+        if(id){
+            const active = document.getElementById(id).parentNode.cloneNode(true);
+            const toOverrideClick = active.querySelectorAll(".content")[0];
+
+            if(toOverrideClick){
+                toOverrideClick.onclick = function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                };
+            }
+
+            active.classList.add("active");
+            document.body.appendChild(active)
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        for(item of document.getElementsByClassName('salary-index')){
+            if(item.getAttribute('data-value')){
+                const v = parseFloat(item.getAttribute('data-value'))
+                item.innerHTML = '<span class="tooltip-text">Salary / Cost of Living index</span>' + v.toFixed(1);
+                if(v < 2){
+                    item.classList.add('lower')
+                }else if(v < 5){
+                    item.classList.add('normal')
+                }else if(v < 12){
+                    item.classList.add('higher')
+                }else{
+                    item.classList.add('freaking-high')
+                }
+            }
+        }
+    });
+
+</script>

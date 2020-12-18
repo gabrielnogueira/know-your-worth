@@ -1,0 +1,19 @@
+baseURL: "http://example.org/"
+languageCode: "en-us"
+title: "#KnowYourWorth"
+theme: "paper"
+Paginate: 12
+menu:
+  main:
+    - name: About
+      url: /about/
+    - name: Legend
+      url: /legend/
+    - name: Contribute
+      url: /contribute/
+taxonomies:
+  degree: degrees
+  experience: experiences
+  position: positions
+  location: locations
+  type: types
