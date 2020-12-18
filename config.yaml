@@ -1,4 +1,4 @@
-baseURL: "http://example.org/"
+baseURL: "/"
 languageCode: "en-us"
 title: "#KnowYourWorth"
 theme: "paper"
@@ -6,11 +6,11 @@ Paginate: 12
 menu:
   main:
     - name: About
-      url: /about/
+      url: ./about/
     - name: Legend
-      url: /legend/
+      url: ./legend/
     - name: Contribute
-      url: /contribute/
+      url: ./contribute/
 taxonomies:
   degree: degrees
   experience: experiences
